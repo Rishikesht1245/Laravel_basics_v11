@@ -12,7 +12,15 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return view('note.index');
+
+        // fetching 
+        $notes = Note::query()->orderBy("created_at", "desc")->paginate(15);
+
+        // Dumb and Die : Dumbs the data and immediately ends script execution.
+        // dd($notes);
+
+        // Passing value to the note.index view : as key value pair
+        return view('note.index', ['notes' => $notes]);
     }
 
     /**
@@ -35,9 +43,9 @@ class NoteController extends Controller
      * Display the specified resource.
      */
     // accessing id from the url
-    public function show(string $id)
+    public function show(Note $note)
     {
-        return view('note.show');
+        return view('note.show', ['note' => $note]);
     }
 
     /**
@@ -45,7 +53,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        return view('note.edit');
+        return view('note.edit', ['note' => $note]);
     }
 
     /**
