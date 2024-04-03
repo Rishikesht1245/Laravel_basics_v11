@@ -36,13 +36,26 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        return 'store';
+        // server side validation -> body contains the note data
+        $data = $request->validate([
+            'note' => ['required', 'string']
+        ]);
+
+        // hard coding user_id
+        $data['user_id'] = 1;
+
+        // returns the note data saved in the DB.
+        $note = Note::create($data);
+
+        // redirecting to show page with $note data to display the newly created note.
+        // message : session message -> can be used in the layout file
+        return to_route('note.show', $note)->with('notification', 'Not was created.');
     }
 
     /**
      * Display the specified resource.
      */
-    // accessing id from the url
+    // $note will be accessed from the url.
     public function show(Note $note)
     {
         return view('note.show', ['note' => $note]);

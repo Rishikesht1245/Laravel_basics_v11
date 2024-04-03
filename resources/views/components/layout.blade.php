@@ -14,6 +14,13 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+        {{-- Displaying the session message (->with(message)) --}}
+        @session('notification')
+        <div class="success-message">
+            {{-- message passed from the controller --}}
+            {{session("notification")}}
+        </div>
+        @endsession
         {{-- Special variable for output the view content --}}
         {{ $slot }}
     </body>

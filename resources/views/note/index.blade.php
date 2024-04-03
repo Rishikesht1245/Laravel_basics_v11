@@ -13,6 +13,8 @@
             </div>
             <div class="note-buttons">
                 {{-- Menitoning routes along with the data to be passed --}}
+                {{-- $note will be passed to the show function in the controller --}}
+                {{-- Primary key from $note will be attached to the route in the browser --}}
                 <a href="{{route('note.show', $note)}}" class="note-edit-button">View</a>
                 <a href="{{route('note.edit', $note)}}" class="note-edit-button">Edit</a>
                 <button class="note-delete-button">Delete</button>
