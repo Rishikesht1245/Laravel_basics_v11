@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <div class="note-container single-note">
         <h1 style="text-align: center">Create New Note</h1>
         {{-- submitting form : it needs to go to the proper root --}}
@@ -13,4 +13,4 @@
             </div>
         </form>
     </div>
-</x-layout>
+</x-app-layout>
