@@ -72,9 +72,22 @@ class NoteController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // we will get the $note object passed from UI 
     public function update(Request $request, Note $note)
     {
-        //
+         // server side validation -> body contains the note data
+         $data = $request->validate([
+            'note' => ['required', 'string']
+        ]);
+
+
+        // invoking the update method to update the
+       $note->update($data);
+       echo "updated";
+
+        // redirecting to show page with $note data to display the newly created note.
+        // message : session message -> can be used in the layout file
+        return to_route('note.show', $note)->with('notification', 'Not was updated.');
     }
 
     /**
