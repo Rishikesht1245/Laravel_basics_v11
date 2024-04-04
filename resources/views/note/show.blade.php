@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="note-container single-note">
+    <div class="note-container single-note py-10">
         <div class="note-header">
-            <h1>Note : {{$note->created_at}}</h1>
+            <h1 class="text-lg text-gray-400 px-4">Note : {{$note->created_at}}</h1>
             <div class="note-buttons">
                 <a href="{{route("note.edit", $note)}}" class="note-edit-button">Edit</a>
                 <form action="{{route("note.destroy", $note)}}" method="POST">
