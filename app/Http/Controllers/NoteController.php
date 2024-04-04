@@ -60,7 +60,7 @@ class NoteController extends Controller
     public function show($id) {
 
         $note = Note::find($id);
-        if($note->user_id !== request()->user()->id){
+        if(!$note || $note->user_id !== request()->user()->id){
             // for bidden error
             abort(403);
         }
@@ -72,7 +72,7 @@ class NoteController extends Controller
      */
     public function edit($id) {
         $note = Note::find($id);
-        if($note->user_id !== request()->user()->id){
+        if(!$note || $note->user_id !== request()->user()->id){
             // for bidden error
             abort(403);
         }
@@ -86,7 +86,7 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
 
-        if($note->user_id !== request()->user()->id){
+        if(!$note || $note->user_id !== request()->user()->id){
             // for bidden error
             abort(403);
         }
@@ -112,7 +112,7 @@ class NoteController extends Controller
     public function destroy($id)
     {
         $note = Note::find($id);
-        if($note->user_id !== request()->user()->id){
+        if(!$note || $note->user_id !== request()->user()->id){
             // for bidden error
             abort(403);
         }
