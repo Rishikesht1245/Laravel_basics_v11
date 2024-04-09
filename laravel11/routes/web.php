@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect("/" ,"/note")->name("dashboard");
 
+// Routes with auth middleware
 Route::middleware(["auth", "verified"])->group(function(){
 Route::get("/note", [NoteController::class, "index"])->name("note.index");
 Route::get("/note/create", [NoteController::class, "create"])->name("note.create");
